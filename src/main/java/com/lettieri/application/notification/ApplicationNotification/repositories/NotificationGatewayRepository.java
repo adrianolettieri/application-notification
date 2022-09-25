@@ -12,9 +12,10 @@ import org.springframework.web.client.RestTemplate;
 public class NotificationGatewayRepository {
     RestTemplate restTemplate;
     ServicesConfig servicesConfig;
+    final String notificationGatewayUrl = "http://NotificationGatewayService/api/notifications/send";
 
     public NotificationGatewayResponse send(NotificationGatewayRequest notificationGatewayRequest) {
-        return this.restTemplate.postForObject(servicesConfig.getGatewayServiceURL(),
+        return this.restTemplate.postForObject(notificationGatewayUrl,
                 notificationGatewayRequest, NotificationGatewayResponse.class);
     }
 }

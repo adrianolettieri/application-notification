@@ -13,8 +13,11 @@ public class NotificationTemplateRepository {
     RestTemplate restTemplate;
     ServicesConfig servicesConfig;
 
+    final String notificationTemplateUrl = "http://NotificationTemplateFormatterService/api/notifications/templates";
+
+
     public NotificationTemplateResponse getTemplate(NotificationTemplateRequest notificationTemplateRequest) {
-        return this.restTemplate.postForObject(servicesConfig.getTemplateServiceURL(),
+        return this.restTemplate.postForObject(notificationTemplateUrl,
                 notificationTemplateRequest, NotificationTemplateResponse.class);
     }
 }

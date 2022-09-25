@@ -12,11 +12,13 @@ import org.springframework.web.client.RestTemplate;
 public class NotificationPreferencesRepository {
     RestTemplate restTemplate;
     ServicesConfig servicesConfig;
+    final String notificationPreferencesUrl = "http://NotificationPreferencesService/api/notifications/preferences";
 
     public NotificationPreferences getPreferences(String customerId) {
+
         NotificationPreferencesRequest notificationPreferencesRequest = NotificationPreferencesRequest
                 .builder().customerId(customerId).build();
-        return this.restTemplate.postForObject(servicesConfig.getPreferenceServiceURL(),
+        return this.restTemplate.postForObject(notificationPreferencesUrl,
                 notificationPreferencesRequest, NotificationPreferences.class);
     }
 }
